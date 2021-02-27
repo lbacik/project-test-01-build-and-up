@@ -1,0 +1,17 @@
+
+DOCKER=docker
+
+NETWORK_NAME=srv_default
+
+DOMAIN=srv.dev.remote.net
+
+GIT_HOST=github.com
+GIT_PORT=22
+
+PROJECT_GIT_URL=git@github.com:lbacik/project-test-01.git
+
+PROJECT_DIR=/opt/project
+PROJECT_NAME=p01
+
+MYSQL_ROOT_PASSWORD=root
+MYSQL_BACKUPS=mysql-backups
