@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 DIRNAME=$(dirname "$0")
+# shellcheck disable=SC1090
 source "${DIRNAME}/.env"
 
 while getopts "b:" opt; do
@@ -16,4 +17,4 @@ if [ -z "${BRANCH}" ]; then
     exit 1
 fi
 
-${DOCKER} build -t ${PROJECT_NAME}:${BRANCH} ${PROJECT_GIT_URL}#${BRANCH}
+${DOCKER} build -t "${PROJECT_NAME}:${BRANCH}" "${PROJECT_GIT_URL}#${BRANCH}"

@@ -5,7 +5,7 @@ source ${DIRNAME}/.env
 
 DOCKER=docker
 
-while getopts "b:mprtd:" opt; do
+while getopts "b:mprtd:h:" opt; do
     # shellcheck disable=SC2220
     case "$opt" in
         b) BRANCH=$OPTARG
@@ -19,6 +19,8 @@ while getopts "b:mprtd:" opt; do
         t) PROJECT=1
             ;;
         d) DATABASE_URL=$OPTARG
+            ;;
+        h) REDIS_HOST=$OPTARG
             ;;
     esac
 done
@@ -77,7 +79,7 @@ echo "db: ${DATABASE_URL}"
         --name "${BRANCH}-${PROJECT_NAME}" \
         --net-alias "${BRANCH}.proxy.${DOMAIN}" \
         -e VIRTUAL_HOST="${BRANCH}.proxy.${DOMAIN}" \
-        -e APP_ENV=prod \
+        -e APP_ENV=dev \
         -e DATABASE_URL="${DATABASE_URL}" \
         -e REDIS_HOST="${REDIS_HOST}" \
         ${PROJECT_NAME}:${BRANCH}
